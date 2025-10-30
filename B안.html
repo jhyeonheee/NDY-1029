@@ -5,58 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NDY</title>
-    <link rel="stylesheet" href="css/연습.css">
+    <link rel="stylesheet" href="css/main.css">
+
 
     <script src="lib/gsap.min.js"></script>
-    <script src="lib/ScrollToPlugin.min.js"></script>
     <script src="lib/ScrollTrigger.min.js"></script>
+    <script src="lib/ScrollSmoother.min.js"></script>
+
+
 
     <script>
+
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
         window.onload = () => {
-            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+            const triggers = gsap.utils.toArray("[parallax_trigger]");
 
-            // 🌌 1. intro 영역 설정 (글로비스처럼 한 화면 가득)
-            gsap.set(".main", { height: "100vh", overflow: "hidden", position: "relative" });
+            triggers.forEach(trigger => {
+                const section = trigger.querySelector("[parallax_section]");
+                const image = trigger.querySelector("[parallax_image]");
+                const next = trigger.querySelector("[second_section]");
 
-            // 🌌 2. 이미지 / 텍스트 초기 상태 설정
-            gsap.set(".define img", { scale: 1 });
-            gsap.set(".text-1, .text-2, .text-3, .text-4", { opacity: 0, y: 50 });
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: trigger,
+                        pin: true,
+                        start: "center center",
+                        end: "+=2000",
+                        scrub: 2,
+                        markers: true // ✅ 확인용
+                    }
+                });
 
-            // 🌌 3. 스크롤 트리거 생성
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".main",
-                    start: "top top",
-                    end: "+=3000", // 전체 스크롤 거리 (조정 가능)
-                    scrub: true,
-                    pin: true, // 섹션 고정
-                }
+                tl.from(section, { clipPath: "inset(20% 40%)" }, "start")
+                    .to(image, { scale: 1.5, transformOrigin: "center center" }, "start")
+                    .from(next, { opacity: 0, y: 40 }, 1);
             });
 
-            // 🌌 4. 텍스트 순차 등장
-            tl.to(".text-1", { opacity: 1, y: 0, duration: 1 })
-                .to(".text-1", { opacity: 0, y: -50, duration: 1 }, "+=0.5")
-                .to(".text-2", { opacity: 1, y: 0, duration: 1 })
-                .to(".text-2", { opacity: 0, y: -50, duration: 1 }, "+=0.5")
-                .to(".text-3", { opacity: 1, y: 0, duration: 1 })
-                .to(".text-3", { opacity: 0, y: -50, duration: 1 }, "+=0.5")
-                .to(".text-4", { opacity: 1, y: 0, duration: 1 })
-                .to(".text-4", { opacity: 0, y: -50, duration: 1 }, "+=0.5");
-
-            // 🌌 5. 마지막 define 이미지 확대 (글로비스처럼 전체 화면으로)
-            tl.to(".define img", {
-                scale: 2.5,
-                opacity: 1,
-                ease: "power2.inOut",
-                duration: 2
-            }, "-=1"); // 마지막 텍스트 사라질 즈음 시작
-
-        };//script end
+        }; //script end
     </script>
 
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        [parallax_trigger] {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        [parallax_section] {
+            overflow: visible;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
+    <div style="height:100vh; background:black;"></div>
+
     <div id="wrap">
         <header class="header">
             <div class="inner">
@@ -145,32 +161,45 @@
             </div><!-- .inner end -->
         </header><!-- .header end -->
 
-        <main class="main">
-            <div class="inner">
-                <div class="content">
-                    <div class="define">
-                        <h2 class="text-1">DEFINE</h2>
-                        <img src="img/heropage(1).jpg" alt="" class="image-1">
-                    </div><!-- .define end -->
+            <section parallax_trigger>
+                <div parallax_section>
+                    <div class="inner">
+                        <div class="container bg">
+                            <div class="text">
+                                <p>DEFINE</p>
+                                <img parallax_image src="img/heropage(1).jpg" alt="" class="image">
+                            </div><!-- .text end -->
+                        </div><!-- .container bg end -->
+                        <div class="container">
+                            <div class="text">
+                                <p>NOTHING.</p>
+                                <img src="img/heropage(5).jpg" alt="" class="image">
+                            </div><!-- .text end -->
+                        </div><!-- .container end -->
+                        <div class="container">
+                            <div class="text">
+                                <p>BE</p>
+                                <img src="img/heropage(3).jpg" alt="" class="image">
+                            </div><!-- .text end -->
+                        </div><!-- .container end -->
+                        <div class="container">
+                            <div class="text">
+                                <p>EVERYTHING</p>
+                                <img src="img/heropage(6).jpg" alt="" class="image">
+                            </div><!-- .text end -->
+                        </div><!-- .container end -->
+                    </div><!-- .inner end -->
 
-                    <div class="nothing">
-                        <h2 class="text-2">NOTHING</h2>
-                        <img src="img/heropage(5).jpg" alt="" class="image-2">
-                    </div><!-- .nothing end -->
+                </div><!-- parallax_section -->
 
-                    <div class="be">
-                        <h2 class="text-3">BE</h2>
-                        <img src="img/heropage(3).jpg" alt="" class="image-3">
-                    </div><!-- .be end -->
+                <div second_section>
+                    <p>Launched in 2017, NDY is a unisex brand rooted in a sporty and casual aesthetic.<br />
+                        The name ‘NDY’ is short for Not Defined Yet, inspired by the idea that in a fast-changing trend
+                        cycle,<br />what truly matters is not fixed definitions but infinite possibilities.</p>
+                </div><!-- .second_section end -->
+            </section><!-- parallax_trigger -->
 
-                    <div class="everything">
-                        <h2 class="text-4">EVERYTHING</h2>
-                        <img src="img/heropage(6).jpg" alt="">
-                    </div><!-- .everything end -->
-
-                </div><!-- .content end -->
-            </div><!-- .inner end -->
-        </main><!-- .main end -->
+        <div style="height:100vh; background:black;"></div>
 
     </div><!-- .wrap end -->
 </body>

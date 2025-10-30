@@ -11,7 +11,7 @@ body {
     font-family: 'pretendard';
 }
 
-/* body::after {
+body::after {
     content: "";
     position: fixed;
     inset: 0;
@@ -24,7 +24,7 @@ body {
 
 body.scaled::after {
     opacity: 1;
-} */
+}
 
 #wrap {
     max-width: 1920px;
@@ -229,33 +229,29 @@ body.scaled::after {
 }
 
 .container.bg .image {
-  width: 320px;
-  height: 90px;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-  object-fit: cover;
-  transition: all 1.6s ease;
-  aspect-ratio: 16 / 6;
+    width: 300px;
+    height: 80px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    object-fit: cover;
+    transition: all 1.5s ease;
 }
 
-/* ✅ 확대 시: 화면 전체를 덮되 비율 자연하게 유지 */
 .container.bg .image--scaled {
-  position: fixed !important;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.4) !important;
-
-  width: 100vw !important;      /* 가로 전체 */
-  height: 100vh !important;     /* 세로도 꽉 채움 */
-  object-fit: cover !important; /* 이미지 비율 유지하면서 채움 */
-
-  border-radius: 0 !important;
-  z-index: 10000 !important;
-  transition: transform 1.6s ease, height 1.6s ease, width 1.6s ease;
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3.2) !important;
+    width: 100vw !important;
+    height: 90vh !important;
+    border-radius: 0 !important;
+    object-fit: cover !important;
+    z-index: 10000 !important;
+    transition: transform 1.5s ease, height 1.2s ease;
 }
 
 .container.bg .text {
-    /*  position: absolute;
+   /*  position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
@@ -331,12 +327,14 @@ body.scaled::after {
 /* .section02 end */
 
 .section02 {}
-
 .section02 .inner {}
-
-.section02 .inner p {
+.section02 .inner p{
     color: white;
-    font-family: 'Cormorant Garamond';
-    font-size: 30px;
-    font-weight: 400;
+}
+
+[parallax_trigger] {
+  min-height: 100vh;  /* 반드시 필요! */
+  position: relative;
+  display: block;
+  overflow: visible;
 }

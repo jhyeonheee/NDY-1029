@@ -1,0 +1,4 @@
+질문리스트
+.container.bg .image--scaled 부분
+width: 100vw !important; 주면 화면 100%, 사진 비율 넘 큼
+width: auto !important; 주면 화면 비율 이상(오른쪽 아래 여백), 사진비율 굿
