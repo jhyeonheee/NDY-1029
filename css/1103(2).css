@@ -651,7 +651,7 @@ body.scaled::after {
 .section06 .style {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+
 }
 
 .section06 .style .swiper-wrapper {
@@ -715,21 +715,21 @@ body.scaled::after {
 }
 
 .footer .alll {
-width: 100%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
-     padding: 100px 80px;
+    padding: 100px 80px;
 }
 
 .footer .inner {
-    
+
     display: flex;
     justify-content: space-between;
-   padding-bottom: 300px;
-   
+    padding-bottom: 300px;
+
 }
 
-.footer .inner  .list {
+.footer .inner .list {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -750,14 +750,14 @@ width: 100%;
     gap: 10px;
 }
 
-.footer .inner .list .item  .all {
+.footer .inner .list .item .all {
     display: flex;
     gap: 50px;
 }
 
 .footer .inner .list .item li {}
 
-.footer .inner .list .item  .left {
+.footer .inner .list .item .left {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -765,46 +765,53 @@ width: 100%;
 
 .footer .inner .list .item .left li {}
 
-.footer .inner .list .item  .right {
+.footer .inner .list .item .right {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footer .inner .list .item  .right li {}
+.footer .inner .list .item .right li {}
 
 .footer .alll .bottom {
     display: flex;
     align-items: flex-end;
     gap: 90px;
 }
+
 .footer .alll .bottom .logo {
     width: 1000px;
     height: 100%;
 }
+
 .footer .alll .bottom .logo img {
     width: 100%;
     height: 269px;
     object-fit: cover;
 }
+
 .footer .alll .bottom .isms {
     display: flex;
     gap: 20px;
 }
+
 .footer .alll .bottom .isms img {
     width: 50px;
     height: 46px;
     object-fit: cover;
 }
+
 .footer .alll .bottom .isms .text {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
+
 .footer .alll .bottom .isms .text p {
     font-size: 15px;
     font-weight: 500;
 }
+
 .footer .alll .bottom .isms .text .top {
     display: flex;
     gap: 10px;

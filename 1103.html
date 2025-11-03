@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NDY</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/1103.css">
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -37,9 +37,9 @@
                     targetImg.classList.remove('image--scaled');
                     document.body.classList.remove('scaled');
 
-                    /* setTimeout(() => {
+                    setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 500); */
+                    }, 500);
                 }
             });//text scale
 
@@ -100,6 +100,8 @@
                 autoplay: {
                     delay: 2500,
                     disableOnInteraction: false,
+                    observer: true,
+                    observeParents: true,
                 },
             });//section06 end
         }; //script end

@@ -371,3 +371,149 @@ body.scaled .overlay {
 body.page2 .section02 {
   transform: translateY(0);
 }
+
+.section05 {
+  width: 100%;
+  background-color: #ececec;
+  padding: 210px 0;
+  overflow: hidden;
+}
+
+/* 🧩 outer */
+.section05 .outer {
+  width: 100%;
+  overflow: visible;
+  position: relative;
+}
+
+.section05 .outer .swiper-wrapper {
+  align-items: center;
+}
+
+.section05 .outer .swiper-slide {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+  width: auto;
+  height: auto !important; /* ✅ 부모 높이 확보 */
+  opacity: 0.4;
+  transition: all 0.6s ease;
+}
+
+.section05 .outer .swiper-slide.active {
+  opacity: 1;
+  z-index: 5;
+  transform: scale(1.05);
+}
+
+/* 🧩 내부 구조 */
+.section05 .outer .swiper-slide > a {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 80px;
+  width: 100%;
+}
+
+/* 🧩 좌측 이미지 */
+.section05 .visual_image {
+  flex-shrink: 0;
+  width: 420px;
+  min-height: 530px;
+  overflow: hidden;
+}
+
+.section05 .visual_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.section05 .outer .swiper-slide:not(.active) .visual_image img {
+  filter: grayscale(100%) brightness(0.6);
+  transform: scale(0.9);
+}
+
+/* 🧩 우측 컨텐츠 */
+.section05 .content {
+  flex: 1;
+  min-height: 530px;
+  display: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(30px);
+  position: static !important; /* ✅ 위로 뜨는 현상 방지 */
+}
+
+.section05 .outer .swiper-slide.active .content {
+  display: block;
+  transform: translateY(0);
+}
+
+/* 🧩 타이틀 */
+.section05 .content .title {
+  margin-bottom: 48px;
+}
+
+.section05 .content .title h2 {
+  font-size: 50px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.section05 .content .title span {
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 🧩 inner swiper */
+.section05 .content .swiper.inner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.section05 .content .swiper.inner .swiper-slide {
+  width: auto;
+}
+
+.section05 .content .item {
+  text-align: left;
+}
+
+.section05 .content .item .image {
+  position: relative;
+  overflow: hidden;
+}
+
+.section05 .content .item .image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.section05 .content .item .image:hover img {
+  transform: scale(1.05);
+}
+
+.section05 .content .item .image button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+}
+
+.section05 .content .item .text {
+  padding-top: 15px;
+}
+
+.section05 .content .item .price {
+  display: flex;
+  gap: 7px;
+}
+
+.section05 .content .item .price strong {
+  color: #7120d5;
+}
