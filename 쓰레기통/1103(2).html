@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDY</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/1103(2).css">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        window.onload = () => {
+            const fullpageSwiper = new Swiper('.fullpage', {
+                direction: 'vertical',
+                slidesPerView: 1,
+                mousewheel: false, // 기본 휠 비활성화
+            });
+
+            let isScrolling = false;
+            window.addEventListener('wheel', (e) => {
+                if (isScrolling) return;
+                isScrolling = true;
+
+                if (e.deltaY > 0) fullpageSwiper.slideNext();
+                else if (e.deltaY < 0) fullpageSwiper.slidePrev();
+
+                setTimeout(() => { isScrolling = false; }, 1000);
+            }, { passive: false });//FULLPAGE END
+
+            var swiper = new Swiper(".Visual", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });//Visual 
+
+            var outerSwiper = new Swiper(".outer", {
+                slidesPerView: 3,
+                spaceBetween: 100,
+                centeredSlides: true,
+                loop: true,
+                nested: true,
+                observer: true,
+                observeParents: true,
+                watchSlidesProgress: true,
+                on: {
+                    slideChangeTransitionStart() {
+                        document.querySelectorAll(".outer .swiper-slide").forEach((slide) => {
+                            slide.classList.remove("active");
+                        });
+                        const active = document.querySelector(".outer .swiper-slide-active");
+                        if (active) active.classList.add("active");
+                    },
+                },
+            });//outer end
+
+            document.querySelectorAll(".inner").forEach((innerEl) => {
+                new Swiper(innerEl, {
+                    slidesPerView: 3.5,
+                    spaceBetween: 25,
+                    nested: true,
+                    observer: true,
+                    observeParents: true,
+                    grabCursor: true,
+                    touchStartPreventDefault: false,
+                });
+            });//inner end
+
+
+            var styleSwiper = new Swiper(".style", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                    observer: true,
+                    observeParents: true,
+                },
+            });//section06 end
+        };//script end
+    </script>
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header class="header">
+            <div class="inner">
+                <h1 class="logo">
+                    <a href="#">
+                        <img src="img/logo_ndy(white).png" alt="">
+                    </a>
+                </h1><!-- .logo end -->
+
+                <nav class="nav">
+                    <ul class="gnb">
+
+                        <li>
+                            <a href="#" class="depth-01">ABOUT</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">25FW</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">CELEBRITY</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">STYLING</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">베스트</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">의류</a>
+                            <ul class="depth-02">
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">상의</a></li>
+                                <li><a href="#">하의</a></li>
+                                <li><a href="#">아우터</a></li>
+                                <li><a href="#">세트</a></li>
+                                <li><a href="#">맞춤 제품찾기 </a></li>
+                            </ul><!-- .depth-02 end -->
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">신발</a>
+                            <ul class="depth-02">
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">운동화</a></li>
+                                <li><a href="#">슬라이드</a></li>
+                            </ul><!-- .depth-02 end -->
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">액세서리</a>
+                            <ul class="depth-02">
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">가방</a></li>
+                                <li><a href="#">백팩</a></li>
+                                <li><a href="#">모자</a></li>
+                            </ul><!-- .depth-02 end -->
+                        </li>
+
+                        <li>
+                            <a href="#" class="depth-01">커뮤니티</a>
+                            <ul class="depth-02">
+                                <li><a href="#">대량구매</a></li>
+                                <li><a href="#">리뷰이벤트</a></li>
+                                <li><a href="#">회원혜택</a></li>
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">매장안내</a></li>
+                                <li><a href="#">GLOBAL</a></li>
+                            </ul><!-- .depth-02 end -->
+                        </li>
+                    </ul><!-- .gnb end -->
+                </nav><!-- .nav end -->
+
+                <ul class="utill">
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#"><img src="img/icon/shoppingBag (2).svg" alt=""></a></li>
+                    <li><a href="#"><img src="img/icon/Search.svg " alt=""></a></li>
+                </ul><!-- .utill end -->
+            </div><!-- .inner end -->
+        </header><!-- .header end -->
+
+        <div class="swiper fullpage">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <section class="section01">
+                        <div class="inner">
+                            <div class="container bg">
+                                <div class="text">
+                                    <p>DEFINE</p>
+                                    <img src="img/heropage(1).jpg" alt="" class="image">
+                                </div><!-- .text end -->
+                            </div><!-- .container bg end -->
+
+                            <div class="container">
+                                <div class="text">
+                                    <p>NOTHING.</p>
+                                    <img src="img/heropage(5).jpg" alt="" class="image">
+                                </div><!-- .text end -->
+                            </div><!-- .container end -->
+
+                            <div class="container">
+                                <div class="text">
+                                    <p>BE</p>
+                                    <img src="img/heropage(3).jpg" alt="" class="image">
+                                </div><!-- .text end -->
+                            </div><!-- .container end -->
+
+                            <div class="container">
+                                <div class="text">
+                                    <p>EVERYTHING</p>
+                                    <img src="img/heropage(6).jpg" alt="" class="image">
+                                </div><!-- .text end -->
+                            </div><!-- .container end -->
+
+                        </div><!-- .inner end -->
+                    </section><!-- .section01 end -->
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <section class="section02">
+                        <div class="inner">
+                            <p>Launched in 2017, NDY is a unisex brand rooted in a sporty and casual aesthetic.<br />
+                                The name ‘NDY’ is short for Not Defined Yet, inspired by the idea that in a
+                                fast-changing trend
+                                cycle,<br />what truly matters is not fixed definitions but infinite possibilities.</p>
+                        </div><!-- .inner end -->
+                    </section><!-- .section02 end -->
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <section class="section03">
+                        <div class="swiper Visual">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="text">
+                                            <p>엔디와이 악세사리</p>
+                                            <h3>NDY ACC</h3>
+                                        </div><!-- .text end -->
+                                        <img src="img/Visual(2).jpg" alt="">
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="text">
+                                            <p>엔디와이 세트</p>
+                                            <h3>NDY SET</h3>
+                                        </div><!-- .text end -->
+                                        <img src="img/Visual(1).jpg" alt="">
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                            </div><!-- swiper-wrapper -->
+
+                        </div><!-- swiper Visual -->
+                    </section><!-- .section03 end -->
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <section class="section04">
+                        <div class="inner">
+
+                            <div class="item">
+                                <a href="#">
+                                    <img src="img/ndy5.png" alt="">
+                                    <div class="text">
+                                        <h3>NDY ACC</h3>
+                                        <p>하나만 더해도 달라지는 스타일링</p>
+                                    </div><!-- .text end -->
+                                </a>
+                            </div><!-- .item end -->
+
+                            <div class="item">
+                                <a href="#">
+                                    <img src="img/ndy4.png" alt="">
+                                    <div class="text">
+                                        <h3>NDY TRACK SET</h3>
+                                        <p>다양한 무드를 완성하는 아이템</p>
+                                    </div><!-- .text end -->
+                                </a>
+                            </div><!-- .item end -->
+                        </div><!-- .inner end -->
+                    </section><!-- .section04 end -->
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <section class="section05">
+                        <div class="swiper outer">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="visual_image"><img src="img/NDY_SECOND.png" alt=""></div>
+                                        <!-- .visual_image end -->
+                                        <div class="content">
+                                            <div class="title">
+                                                <h2>25FW NEW ITEM</h2>
+                                                <span>새로운 계절, 새로운 시작</span>
+                                            </div><!-- .title end -->
+                                            <div class="swiper inner">
+                                                <div class="swiper-wrapper">
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+                                                </div><!-- swiper-wrapper -->
+
+                                            </div><!-- swiper inner -->
+                                        </div><!-- .content end -->
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                                <!-- slide1 end -->
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="visual_image"><img src="img/NDY_SECOND.png" alt=""></div>
+                                        <!-- .visual_image end -->
+                                        <div class="content">
+                                            <div class="title">
+                                                <h2>25FW NEW ITEM</h2>
+                                                <span>새로운 계절, 새로운 시작</span>
+                                            </div><!-- .title end -->
+                                            <div class="swiper inner">
+                                                <div class="swiper-wrapper">
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+                                                </div><!-- swiper-wrapper -->
+
+                                            </div><!-- swiper inner -->
+                                        </div><!-- .content end -->
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                                <!-- slide 2 end -->
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="visual_image"><img src="img/NDY_SECOND.png" alt=""></div>
+                                        <!-- .visual_image end -->
+                                        <div class="content">
+                                            <div class="title">
+                                                <h2>25FW NEW ITEM</h2>
+                                                <span>새로운 계절, 새로운 시작</span>
+                                            </div><!-- .title end -->
+                                            <div class="swiper inner">
+                                                <div class="swiper-wrapper">
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+                                                </div><!-- swiper-wrapper -->
+
+                                            </div><!-- swiper inner -->
+                                        </div><!-- .content end -->
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                                <!-- slide 3 end -->
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="visual_image"><img src="img/NDY_SECOND.png" alt=""></div>
+                                        <!-- .visual_image end -->
+                                        <div class="content">
+                                            <div class="title">
+                                                <h2>25FW NEW ITEM</h2>
+                                                <span>새로운 계절, 새로운 시작</span>
+                                            </div><!-- .title end -->
+                                            <div class="swiper inner">
+                                                <div class="swiper-wrapper">
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+                                                </div><!-- swiper-wrapper -->
+
+                                            </div><!-- swiper inner -->
+                                        </div><!-- .content end -->
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                                <!-- slide 4 end -->
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="visual_image"><img src="img/NDY_SECOND.png" alt=""></div>
+                                        <!-- .visual_image end -->
+                                        <div class="content">
+                                            <div class="title">
+                                                <h2>25FW NEW ITEM</h2>
+                                                <span>새로운 계절, 새로운 시작</span>
+                                            </div><!-- .title end -->
+                                            <div class="swiper inner">
+                                                <div class="swiper-wrapper">
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+                                                </div><!-- swiper-wrapper -->
+
+                                            </div><!-- swiper inner -->
+                                        </div><!-- .content end -->
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+                                <!-- slide 5 end -->
+
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <div class="visual_image"><img src="img/NDY_SECOND.png" alt=""></div>
+                                        <!-- .visual_image end -->
+                                        <div class="content">
+                                            <div class="title">
+                                                <h2>25FW NEW ITEM</h2>
+                                                <span>새로운 계절, 새로운 시작</span>
+                                            </div><!-- .title end -->
+                                            <div class="swiper inner">
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(1).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(4).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(3).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+
+                                                    <div class="swiper-slide">
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <img src="img/fw(2).jpg" alt="">
+                                                                <button><img src="img/heart.svg" alt=""></button>
+                                                            </div><!-- .image end -->
+                                                            <div class="text">
+                                                                <p>벨로아 트랙 세트 브라운</p>
+                                                                <div class="price">
+                                                                    <strong>28%</strong>
+                                                                    <h3>135,300원</h3>
+                                                                </div><!-- .price end -->
+                                                            </div><!-- .text end -->
+                                                        </div><!-- .item end -->
+                                                    </div><!-- swiper-slide -->
+                                                </div><!-- swiper-wrapper -->
+
+                                            </div><!-- swiper inner -->
+                                        </div><!-- .content end -->
+                                    </a>
+                                </div><!-- swiper-slide -->
+
+
+                            </div><!-- swiper-wrapper -->
+                        </div><!-- swiper outer -->
+
+                    </section><!-- .section05 end -->
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <section class="section06">
+                        <div class="swiper style">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <img src="img/style2.jpg" alt="">
+                                    <div class="text">
+                                        <div class="title">
+                                            <h2>LETS NDY</h2>
+                                            <p>NDY의 다양한 스타일을 즐겨보세요</p>
+                                        </div><!-- .title end -->
+                                        <a href="#">VIEW NOW</a>
+                                    </div><!-- .text end -->
+                                </div><!-- swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <img src="img/celeb.jpg" alt="">
+                                    <div class="text">
+                                        <div class="title">
+                                            <h2>CELEBRITY</h2>
+                                            <p>NDY와 함께하는 셀럽들을 만나보세요</p>
+                                        </div><!-- .title end -->
+                                        <a href="#">VIEW NOW</a>
+                                    </div><!-- .text end -->
+                                </div><!-- swiper-slide -->
+
+                            </div><!-- swiper-wrapper -->
+                            <div class="swiper-pagination"></div>
+                        </div><!-- swiper style -->
+                    </section><!-- .section06 end -->
+                </div><!-- swiper-slide -->
+
+                <div class="swiper-slide">
+                    <footer class="footer">
+                        <div class="alll">
+                            <div class="inner">
+                                <div class="list">
+                                    <div class="title">
+                                        <h3>COMPANY INFO</h3>
+                                    </div><!-- .title end -->
+                                    <ul class="item">
+                                        <li>주식회사 에이피알 / 김병훈</li>
+                                        <li>주소: 서울특별시 송파구 올림픽로 300, 36층(신천동, 롯데월드타워)</li>
+                                        <li>사업자등록번호 220-88-89441 [사용자정보확인]</li>
+                                        <li>통신판매업신고 : 제2020-서울송파-1274</li>
+                                        <li>전자우편주소: cs123@apr-in.com</li>
+                                    </ul><!-- .item end -->
+                                </div><!-- .list end -->
+                                <div class="list">
+                                    <div class="title">
+                                        <h3>FOLLOW US</h3>
+                                    </div><!-- .title end -->
+                                    <ul class="item">
+                                        <li>인스타그램</li>
+                                        <li>유튜브</li>
+                                        <li>페이스북</li>
+                                    </ul><!-- .item end -->
+                                </div><!-- .list end -->
+                                <div class="list">
+                                    <div class="title">
+                                        <h3> CONTACT US</h3>
+                                    </div><!-- .title end -->
+                                    <div class="item">
+                                        <div class="all">
+                                            <ul class="left">
+                                                <li>이용안내</li>
+                                                <li>이용약관</li>
+                                                <li>개인정보 처리방침</li>
+                                            </ul><!-- .left end -->
+                                            <ul class="right">
+                                                <li>쇼케이스</li>
+                                                <li>제휴문의</li>
+                                                <li>파트너십</li>
+                                            </ul><!-- .left end -->
+                                        </div><!-- .all end -->
+                                    </div><!-- .item end -->
+                                </div><!-- .list end -->
+                                <div class="list">
+                                    <div class="title">
+                                        <h3>C/S CENTER</h3>
+                                    </div><!-- .title end -->
+                                    <ul class="item">
+                                        <li>1544-2083</li>
+                                        <li>09:00 - 18:00(토,일,공휴일 휴무)</li>
+                                        <li>LUNCH : 12:00 - 13:00</li>
+                                    </ul><!-- .item end -->
+                                </div><!-- .list end -->
+                            </div><!-- .inner end -->
+                            <div class="bottom">
+                                <h2 class="logo">
+                                    <img src="img/icon/bigLogo.svg" alt="">
+                                </h2><!-- .logo end -->
+                                <div class="isms">
+                                    <img src="img/isms.svg" alt="">
+                                    <div class="text">
+                                        <div class="top">
+                                            <p>정보보호 관리체계(ISMS)인증</p>
+                                            <p>인증범위 온라인 서비스 운영 (메디큐브, 널디, 에이프릴스킨)</p>
+                                        </div><!-- .top end -->
+                                        <p>유효기간 2025.06.18 - 2028.06.17</p>
+                                    </div><!-- .text end -->
+                                </div><!-- .isms end -->
+                            </div><!-- .bottom end -->
+                        </div><!-- .alll end -->
+                    </footer><!-- .footer end -->
+                </div><!-- swiper-slide -->
+
+            </div><!-- swiper-wrapper -->
+            <div class="swiper-pagination"></div>
+        </div><!-- swiper fullpage -->
+    </div><!-- #wrap end -->
+</body>
+
+</html>

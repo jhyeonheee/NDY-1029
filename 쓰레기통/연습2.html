@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDY</title>
+    <link rel="stylesheet" href="css/연습2.css">
+
+    <script>
+        window.onload = () => {
+            const targetImg = document.querySelector('.container.bg .image');
+            const section02 = document.querySelector('.section02');
+            const imgWrap = document.querySelector('.section02 .img-wrap');
+            const section02Inner = document.querySelector('.section02');
+            let isScaled = false;
+            let isAnimating = false;
+
+            window.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                if (isAnimating) return;
+
+                // 🔽 아래로 스크롤 → 이미지 확대 + section02 이동
+                if (e.deltaY > 0 && !isScaled) {
+                    isScaled = true;
+                    isAnimating = true;
+
+                    targetImg.classList.add('image--scaled');
+                    document.body.classList.add('scaled');
+
+                    setTimeout(() => {
+                        imgWrap.appendChild(targetImg);
+                        section02.scrollIntoView({ behavior: 'smooth' });
+                        section02.classList.add('show');
+                        isAnimating = false;
+                    }, 1300);
+                }
+
+                // 🔼 위로 스크롤 → 이미지 원위치 복귀
+                else if (e.deltaY < 0 && isScaled) {
+                    isScaled = false;
+                    isAnimating = true;
+
+                    section02.classList.remove('show');
+                    document.querySelector('.container.bg .text').appendChild(targetImg);
+
+                    targetImg.classList.remove('image--scaled');
+                    document.body.classList.remove('scaled');
+
+                    setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        isAnimating = false;
+                    }, 800);
+                }
+            });
+        };
+
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="inner">
+                <h1 class="logo">
+                    <a href="#">
+                        <img src="img/logo_ndy(white).png" alt="">
+                    </a>
+                </h1>
+
+                <nav class="nav">
+                    <ul class="gnb">
+                        <li><a href="#" class="depth-01">ABOUT</a></li>
+                        <li><a href="#" class="depth-01">25FW</a></li>
+                        <li><a href="#" class="depth-01">CELEBRITY</a></li>
+                        <li><a href="#" class="depth-01">STYLING</a></li>
+                        <li><a href="#" class="depth-01">베스트</a></li>
+                        <li>
+                            <a href="#" class="depth-01">의류</a>
+                            <ul class="depth-02">
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">상의</a></li>
+                                <li><a href="#">하의</a></li>
+                                <li><a href="#">아우터</a></li>
+                                <li><a href="#">세트</a></li>
+                                <li><a href="#">맞춤 제품찾기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth-01">신발</a>
+                            <ul class="depth-02">
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">운동화</a></li>
+                                <li><a href="#">슬라이드</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth-01">액세서리</a>
+                            <ul class="depth-02">
+                                <li><a href="#">전체</a></li>
+                                <li><a href="#">가방</a></li>
+                                <li><a href="#">백팩</a></li>
+                                <li><a href="#">모자</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth-01">커뮤니티</a>
+                            <ul class="depth-02">
+                                <li><a href="#">대량구매</a></li>
+                                <li><a href="#">리뷰이벤트</a></li>
+                                <li><a href="#">회원혜택</a></li>
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">매장안내</a></li>
+                                <li><a href="#">GLOBAL</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <ul class="utill">
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#"><img src="img/icon/shoppingBag (2).svg" alt=""></a></li>
+                    <li><a href="#"><img src="img/icon/Search.svg" alt=""></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main class="main">
+            <!-- SECTION 01 -->
+            <section class="section01">
+                <div class="inner">
+                    <div class="container bg">
+                        <div class="text">
+                            <p>DEFINE</p>
+                            <img src="img/heropage(1).jpg" alt="" class="image">
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="text">
+                            <p>NOTHING.</p>
+                            <img src="img/heropage(5).jpg" alt="" class="image">
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="text">
+                            <p>BE</p>
+                            <img src="img/heropage(3).jpg" alt="" class="image">
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="text">
+                            <p>EVERYTHING</p>
+                            <img src="img/heropage(6).jpg" alt="" class="image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 02 -->
+            <section class="section02">
+                <div class="img-wrap"></div>
+                <div class="inner">
+                    <p>
+                        Launched in 2017, NDY is a unisex brand rooted in a sporty and casual aesthetic.<br />
+                        The name ‘NDY’ is short for Not Defined Yet, inspired by the idea that in a fast-changing trend
+                        cycle,<br />what truly matters is not fixed definitions but infinite possibilities.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ✅ SCRIPT -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,323 @@
+@charset "utf-8";
+@import url('reset.css');
+@import url('font.css');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #000;
+    font-family: 'pretendard';
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body.scaled::after {
+    opacity: 1;
+}
+
+#wrap {
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: black;
+    font-family: 'pretendard';
+}
+
+#wrap .header {
+    width: 100%;
+    height: 75px;
+    background-color: black;
+    opacity: 0.95;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    position: relative;
+}
+
+#wrap .header .inner {
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+}
+
+#wrap .header .logo {
+    width: 7%;
+}
+
+#wrap .header .logo a {
+    display: block;
+}
+
+#wrap .header .logo a img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+#wrap .header .nav .gnb {
+    display: flex;
+    gap: 40px;
+}
+
+#wrap .header .nav .gnb>li {}
+
+/* ───────── 1차 메뉴 ───────── */
+#wrap .header .nav .gnb li .depth-01 {
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    display: block;
+    padding: 10px;
+    color: white;
+    transition: color 0.3s;
+}
+
+/* hover 시 글자색 변화 */
+#wrap .header .nav .gnb li .depth-01:hover {
+    color: 5;
+    width: 100%;
+}
+
+/* ✅ 중앙에서 양쪽으로 퍼지는 밑줄 애니메이션 */
+#wrap .header .nav .gnb li .depth-01::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: #7120d5;
+    transition: all 0.3s ease;
+}
+
+/* hover 시 밑줄 나타남 */
+#wrap .header .nav .gnb li .depth-01:hover::after {
+    width: 100%;
+}
+
+/* ───────── 드롭다운 (변경 없음) ───────── */
+#wrap .header .inner .nav .gnb>li .depth-02 {
+    display: none;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#wrap .header .inner .nav .gnb>li:hover .depth-02 {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+#wrap .header .inner .nav .gnb>li .depth-02 li {
+    list-style: none;
+}
+
+#wrap .header .inner .nav .gnb>li .depth-02 li a {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 0;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+#wrap .header .inner .nav .gnb>li .depth-02 li a:hover {
+    color: #aaa;
+}
+
+/* ───────── UTILL ───────── */
+#wrap .header .utill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    gap: 15px;
+}
+
+#wrap .header .utill li a {
+    display: block;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+#wrap .header .utill li a:hover {
+    color: #aaa;
+}
+
+#wrap .header .utill li a img {
+    width: 100%;
+    height: 20px;
+    object-fit: cover;
+}
+
+/* .header end */
+
+.section01 {
+  width: 100%;
+  height: 100vh; /* ✅ 화면 전체 높이 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.section01 .inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  position: relative;
+  text-align: center;
+}
+
+.section01 .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.container.bg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    overflow: visible;
+}
+
+.container.bg .image {
+  width: 300px;
+  height: 80px;
+  border-radius: 50px;
+  object-fit: cover;
+  transition: all 1.5s ease;
+}
+
+.container.bg .image--scaled {
+  position: fixed !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(3.2) !important;
+  width: auto !important;
+  height: 90vh !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+  z-index: 10000 !important;
+  transition: transform 1.5s ease, height 1.2s ease;
+}
+
+.container.bg .text {
+      position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section01 .container:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.section01 .container:nth-child(2) {
+    animation-delay: 0.9s;
+}
+
+.section01 .container:nth-child(3) {
+    animation-delay: 1.3s;
+}
+
+.section01 .container:nth-child(4) {
+    animation-delay: 1.7s;
+}
+
+.section01 .container:nth-child(3) .text {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.container .text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.container .text p {
+    color: #ffffff;
+    font-size: 90px;
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.container .text .image {
+    width: 300px;
+    height: 80px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: block;
+}
+
+.container .text img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}

@@ -1,0 +1,187 @@
+@charset "utf-8";
+@import url('reset.css');
+@import url('font.css');
+
+.section05 {
+    max-width: 1920px;
+    background-color: #ececec;
+    padding: 210px 0;
+    margin: 0 auto;
+}
+
+.section05 .parent-slider {
+    margin: 0 auto;
+    position: relative;
+
+}
+
+.section05 .parent-slider .swiper-wrapper {
+
+
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide {
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: center; */
+    /* gap: 80px; */
+    /* max-width: 1440px; */
+    /* margin: 0 auto; */
+
+}
+
+.section05 .parent-slider .swiper-slide.active {
+    /* opacity: 1; */
+    /* z-index: 10; */
+}
+
+/* .section05 .parent-slider .swiper-wrapper .swiper-slide >  {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 80px;
+    width: 100%;
+} */
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .visual_image {
+    display: flex;
+    width: 435px;
+    flex-shrink: 0;
+    height: 530px;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide .visual_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide .content {
+    width: 100%;
+    /* width: 1360px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    /*  */
+    overflow: hidden;
+    margin-left: 30px;
+}
+
+.section05 .parent-slider .swiper-slide.active  .content {
+    display: flex;
+
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .title {
+    margin-bottom: 48px;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .title h2 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .title span {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 48px;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider {
+    width: 100%;
+    position: relative;
+   
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper {
+    display: flex;
+    
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide {
+
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item {
+    text-align: left;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .image {
+    position: relative;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .image > img {
+     width: 190px;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* .section05 .content .swiper.inner .item .image:hover img {
+    transform: scale(1.05);
+} */
+
+.section05 .child-slider .item .image >  button {
+    position: absolute;
+    top: 15px;
+    right: 20px; 
+    width: 20px ;
+    height: 20px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.section05  .child-slider .item .image > button > img {
+    
+    
+    object-fit: cover;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .text {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .text p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .text .price {
+    display: flex;
+    gap: 7px;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .text .price strong {
+    font-size: 16px;
+    font-weight: 600;
+    color: #7120d5;
+}
+
+.section05 .parent-slider .swiper-wrapper .swiper-slide  .content .child-slider .swiper-wrapper .swiper-slide .item .text .price h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: #222;
+}
+
+.swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateX(-50%);
+    z-index: 10000;
+}
+
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    left: 80%0;
+}

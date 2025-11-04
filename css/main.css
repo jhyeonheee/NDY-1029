@@ -89,13 +89,13 @@ body.scaled::after {
     transition: color 0.3s;
 }
 
-/* hover 시 글자색 변화 */
+
 #wrap .header .nav .gnb li .depth-01:hover {
     color: 5;
     width: 100%;
 }
 
-/* ✅ 중앙에서 양쪽으로 퍼지는 밑줄 애니메이션 */
+
 #wrap .header .nav .gnb li .depth-01::after {
     content: "";
     position: absolute;
@@ -108,12 +108,12 @@ body.scaled::after {
     transition: all 0.3s ease;
 }
 
-/* hover 시 밑줄 나타남 */
+
 #wrap .header .nav .gnb li .depth-01:hover::after {
     width: 100%;
 }
 
-/* ───────── 드롭다운 (변경 없음) ───────── */
+
 #wrap .header .inner .nav .gnb>li .depth-02 {
     display: none;
     position: absolute;
@@ -159,7 +159,7 @@ body.scaled::after {
     color: #aaa;
 }
 
-/* ───────── UTILL ───────── */
+
 #wrap .header .utill {
     display: flex;
     justify-content: space-between;
@@ -190,7 +190,6 @@ body.scaled::after {
 .section01 {
     width: 100%;
     height: 100vh;
-    /* ✅ 화면 전체 높이 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,20 +237,15 @@ body.scaled::after {
     aspect-ratio: 16 / 6;
 }
 
-/* ✅ 확대 시: 화면 전체를 덮되 비율 자연하게 유지 */
+
 .container.bg .image--scaled {
     position: fixed !important;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.4) !important;
-
     width: 100vw !important;
-    /* 가로 전체 */
     height: 100vh !important;
-    /* 세로도 꽉 채움 */
     object-fit: cover !important;
-    /* 이미지 비율 유지하면서 채움 */
-
     border-radius: 0 !important;
     z-index: 10000 !important;
     transition: transform 1.6s ease, height 1.6s ease, width 1.6s ease;
