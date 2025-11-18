@@ -582,6 +582,9 @@ body.scaled::after {
     transform: scale(1.05);
 } */
 
+.section05 .child-slider .item .image button:hover {
+    
+}
 .section05 .child-slider .item .image>button {
     position: absolute;
     top: 15px;
