@@ -33,6 +33,12 @@ body.scaled::after {
     font-family: 'pretendard';
 }
 
+.header.hide {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
 #wrap .header {
     width: 100%;
     height: 75px;
@@ -43,7 +49,8 @@ body.scaled::after {
     top: 0;
     left: 0;
     z-index: 1000000000;
-    position: relative;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    /* position: relative; */
 }
 
 #wrap .header .inner {
@@ -327,15 +334,23 @@ body.scaled::after {
 
 /* .section02 end */
 
-.section02 {}
+.section02 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
 
 .section02 .inner {}
 
 .section02 .inner p {
+    width: 100%;
     color: white;
     font-family: 'Cormorant Garamond';
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 400;
+    line-height: 1.3;
 }
 
 /* .section02 end */
@@ -582,9 +597,8 @@ body.scaled::after {
     transform: scale(1.05);
 } */
 
-.section05 .child-slider .item .image button:hover {
-    
-}
+.section05 .child-slider .item .image button:hover {}
+
 .section05 .child-slider .item .image>button {
     position: absolute;
     top: 15px;

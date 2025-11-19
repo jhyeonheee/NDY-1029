@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDY HERO</title>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: white;
+            font-family: 'pretendard';
+            overflow-x: hidden;
+        }
+
+        /* SECTION 01 */
+        .section01 {
+            position: relative;
+            height: 200vh;
+            width: 100%;
+        }
+
+        .line-wrap {
+            padding-top: 20vh;
+            position: relative;
+            z-index: 5;
+        }
+
+        .container {
+            opacity: 0;
+            transform: translateY(40px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .container .text {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .container p {
+            font-size: 80px;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .container img {
+            width: 300px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 40px;
+        }
+
+        /* 스크롤 시 확대되는 이미지 = 기존 .container.bg .image */
+        .container.bg {
+            position: relative;
+            z-index: 3;
+        }
+
+        .container.bg .image {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* 확대될 때 fixed 포지션으로 변하는 CSS */
+        .image-fixed {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform-origin: center center;
+            transform: translate(-50%, -50%) scale(1);
+            border-radius: 40px;
+            z-index: 10 !important;
+        }
+
+        /* SECTION 02 */
+        .section02 {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section02 p {
+            font-size: 32px;
+            opacity: 0;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="section01">
+
+        <div class="line-wrap">
+
+            <div class="container bg">
+                <div class="text">
+                    <p>DEFINE</p>
+                    <img src="img/heropage(1).jpg" class="image">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="text">
+                    <p>NOTHING.</p>
+                    <img src="img/heropage(5).jpg" class="image">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="text">
+                    <p>BE</p>
+                    <img src="img/heropage(3).jpg" class="image">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="text">
+                    <p>EVERYTHING</p>
+                    <img src="img/heropage(6).jpg" class="image">
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section02">
+        <p>Launched in 2017, NDY is a unisex brand rooted in sporty and casual aesthetics.</p>
+    </section>
+
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        window.onload = () => {
+
+            /* 0. 등장 */
+            gsap.utils.toArray(".container").forEach((el, i) => {
+                gsap.to(el, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: i * 0.25,
+                    ease: "power3.out"
+                });
+            });
+
+            const bgImg = document.querySelector(".container.bg .image");
+
+            /* 1. 스크롤 시작 → bg 이미지가 fixed 상태로 붙음 */
+            ScrollTrigger.create({
+                trigger: ".section01",
+                start: "top top",
+                end: "bottom top",
+                onEnter: () => bgImg.classList.add("image-fixed"),
+                onLeaveBack: () => bgImg.classList.remove("image-fixed")
+            });
+
+            /* 2. bg 이미지 확대 (기존 이미지 자체 확대) */
+            gsap.to(bgImg, {
+                scale: 3.4,
+                borderRadius: 0,
+                width: "100vw",
+                height: "100vh",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".section01",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                }
+            });
+
+            /* 3. section02 텍스트 등장 */
+            gsap.to(".section02 p", {
+                opacity: 1,
+                y: -40,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".section02",
+                    start: "top 70%",
+                    end: "top 40%",
+                    scrub: true
+                }
+            });
+
+        };
+    </script>
+
+</body>
+
+</html>

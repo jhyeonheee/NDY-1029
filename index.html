@@ -26,9 +26,9 @@
                     targetImg.classList.add('image--scaled');
                     document.body.classList.add('scaled');
 
-                    setTimeout(() => {
+                    /* setTimeout(() => {
                         nextSection.scrollIntoView({ behavior: 'smooth' });
-                    }, 1300);
+                    }, 1300); */
                 }
 
                 else if (e.deltaY < 0 && isScaled) {
@@ -93,6 +93,24 @@
                     disableOnInteraction: false,
                 },
             });//section06 end
+
+            let lastScrollY = window.scrollY;
+            const header = document.querySelector(".header");
+
+            window.addEventListener("scroll", () => {
+                const currentY = window.scrollY;
+
+                // 스크롤 내리는 중 + 100px 이상 내려갔을 때 → 헤더 숨김
+                if (currentY > lastScrollY && currentY > 100) {
+                    header.classList.add("hide");
+                }
+                // 스크롤 올릴 때 → 헤더 다시 나타남
+                else {
+                    header.classList.remove("hide");
+                }
+
+                lastScrollY = currentY;
+            });
         }; //script end
     </script>
 </head>
@@ -222,9 +240,9 @@
 
             <section class="section02">
                 <div class="inner">
-                    <p>Launched in 2017, NDY is a unisex brand rooted in a sporty and casual aesthetic.<br />
+                    <p>Launched in 2017, NDY is a unisex brand rooted in a sporty and casual aesthetic.
                         The name ‘NDY’ is short for Not Defined Yet, inspired by the idea that in a fast-changing trend
-                        cycle,<br />what truly matters is not fixed definitions but infinite possibilities.</p>
+                        cycle, what truly matters is not fixed definitions but infinite possibilities.</p>
                 </div><!-- .inner end -->
             </section><!-- .section02 end -->
 
@@ -301,7 +319,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(1).jpg" alt="">
+                                                    <img src="img/fw(4).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -332,7 +350,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(1).jpg" alt="">
+                                                    <img src="img/fw(2).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -348,7 +366,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(1).jpg" alt="">
+                                                    <img src="img/fw(3).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -363,7 +381,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(1).jpg" alt="">
+                                                    <img src="img/fw(4).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -406,12 +424,12 @@
 
                         <div class="swiper-slide">
 
-                            <div class="visual_image"><img src="img/heropage(1).jpg" alt=""></div>
+                            <div class="visual_image"><img src="img/NDY_product_thumb.png" alt=""></div>
                             <!-- .visual_image end -->
                             <div class="content">
                                 <div class="title">
-                                    <h2>25FW NEW ITEM</h2>
-                                    <span>새로운 계절, 새로운 시작</span>
+                                    <h2>NDY X CCWC COLLECTION</h2>
+                                    <span>UP TO 40% OFF</span>
                                 </div><!-- .title end -->
 
                                 <div class="swiper-container child-slider">
@@ -419,7 +437,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/CCWC(1).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -435,7 +453,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/CCWC(2).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -451,7 +469,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/CCWC(3).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -467,7 +485,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/CCWC(4).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -483,7 +501,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/CCWC(5).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -508,12 +526,12 @@
 
                         <div class="swiper-slide">
 
-                            <div class="visual_image"><img src="img/heropage(1).jpg" alt=""></div>
+                            <div class="visual_image"><img src="img/NDY_product_thumb(2).png" alt=""></div>
                             <!-- .visual_image end -->
                             <div class="content">
                                 <div class="title">
-                                    <h2>25FW NEW ITEM</h2>
-                                    <span>새로운 계절, 새로운 시작</span>
+                                    <h2>NEW ARRIVAL</h2>
+                                    <span>새롭게 만나보실 수 있는 신제품</span>
                                 </div><!-- .title end -->
 
                                 <div class="swiper-container child-slider">
@@ -521,7 +539,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(1).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -537,7 +555,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(2).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -553,7 +571,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(3).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -569,7 +587,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(4).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -585,7 +603,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(5).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -601,7 +619,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(6).jpg" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
@@ -617,7 +635,7 @@
                                         <div class="swiper-slide">
                                             <div class="item">
                                                 <div class="image">
-                                                    <img src="img/fw(2).jpg" alt="">
+                                                    <img src="img/ARRIVAL(7).png" alt="">
                                                     <button><img src="img/heart.svg" alt=""></button>
                                                 </div><!-- .image end -->
                                                 <div class="text">
